@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement1 : MonoBehaviour
 {
     public Rigidbody rb;
-    public float movingForce = 70f;
+    public float movingForce = 500f;
     float xInput;
     float zInput;
     // Start is called before the first frame update

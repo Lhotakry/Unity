@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Sphere2script : MonoBehaviour
 {   
-    public NextLevel nextlevel;
+    public NextLevel1 nextlevel;
     public GameObject WinText;
     public GameObject TryItAgain;
     public GameObject Instruction;

@@ -13,7 +13,7 @@ public class StartGame1 : MonoBehaviour
         if(Input.GetKey("p"))
         {
         Sphere1.SetActive(true);
-        Sphere1.SetActive(true);
+        Sphere2.SetActive(true);
         Instruction.SetActive(false);
         movement.enabled = true;
         }

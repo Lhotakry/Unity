@@ -9,7 +9,7 @@ public class NextLevel : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.N))
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level01");
         }
     }
 }
