@@ -10,6 +10,8 @@ public class NextLevel1 : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.N))
         {
             SceneManager.LoadScene("Level1");
+            Debug.Log("If");
         }
+        Debug.Log("Update");
     }
 }

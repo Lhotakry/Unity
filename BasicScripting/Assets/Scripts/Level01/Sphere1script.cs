@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class Sphere1script : MonoBehaviour
 {   
     public GameObject TryItAgain;
+    public NextLevel1 nextlevel;
+    public GameObject WinText;
     public GameObject Instruction;
-    public GameObject Sphere1;
+    public static int SphereCount = 2;
     public float delay = 2f;
     Vector3 originalPosSphere;
     Vector3 originalPosPlayer;
@@ -15,22 +17,44 @@ public class Sphere1script : MonoBehaviour
     
     public void Start()
     {
-        originalPosSphere = Sphere1.transform.position;
+        originalPosSphere = this.transform.position;
         originalPosPlayer = Player.transform.position;
     }
     void OnCollisionEnter(Collision collision)
-    {
+   {
+        if(collision.gameObject.tag == "Player")
+        {   
+            Instruction.SetActive(false);
+            this.gameObject.SetActive(false);
+            SphereCount --;
+            Debug.Log(SphereCount);
+            if (SphereCount<=0)
+            {
+                WinText.SetActive(true);
+                Invoke("NextLevel", delay);
+            }
+
+        }
         if(collision.gameObject.tag == "Ground")
         {
             Instruction.SetActive(false);
             TryItAgain.SetActive(true);
-            Invoke("Restart", delay);
+            Invoke("RestartGlobal", delay);
         }
     }
-    void Restart()
+    void RestartGlobal()
     {
-        Sphere1.transform.position = originalPosSphere;
+        Player.GetComponent<StartGame1>().Restart();
+    }
+    public void RestartSphere()
+    {
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        this.transform.position = originalPosSphere;
         Player.transform.position = originalPosPlayer;
         TryItAgain.SetActive(false);
+    }
+     void NextLevel()
+    {
+        nextlevel.enabled = true;
     }
 }
